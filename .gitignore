@@ -1,0 +1,49 @@
+# Environment files
+*.env
+input_folder/*.env
+input_folder/beeswax_input_*.env
+
+# Streamlit secrets
+.streamlit/secrets.toml
+
+# Generated output files
+output_*/
+output_reports/
+output_folder/
+output_raw/
+
+# Python 
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+ENV/
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS specific files
+.DS_Store
+Thumbs.db 

@@ -1,0 +1,29 @@
+2025-04-13 02:27:20,652 - INFO - Starting Beeswax API test
+2025-04-13 02:27:20,652 - INFO - Reading brief from: C:\QA_auto_check\Brief\Create Campaign Brief - a90VS0000000RzV.xlsx
+2025-04-13 02:27:21,376 - INFO - 
+Brief loaded successfully!
+2025-04-13 02:27:21,376 - INFO - Brief shape: (31, 13)
+2025-04-13 02:27:21,381 - INFO - 
+Initializing BeeswaxAPI...
+2025-04-13 02:27:23,620 - INFO - 
+Extracting IDs from brief...
+2025-04-13 02:27:23,626 - INFO - Found IDs:
+2025-04-13 02:27:23,637 - INFO - campaign: ['BVI0000005436']
+2025-04-13 02:27:23,638 - INFO - line_item: ['BVT000021976', 'BVT000021977']
+2025-04-13 02:27:23,642 - INFO - creative: ['BVP000009771']
+2025-04-13 02:27:23,642 - INFO - 
+Fetching campaign data...
+2025-04-13 02:27:24,303 - INFO - Campaign BVI0000005436 data: {'payload': []}
+2025-04-13 02:27:24,304 - INFO - 
+Fetching line item data...
+2025-04-13 02:27:24,891 - INFO - Line Item BVT000021976 data: {'payload': []}
+2025-04-13 02:27:25,532 - INFO - Line Item BVT000021977 data: {'payload': []}
+2025-04-13 02:27:25,532 - INFO - 
+Fetching creative data...
+2025-04-13 02:27:26,315 - INFO - Creative BVP000009771 data: {'payload': []}
+2025-04-13 02:27:26,317 - INFO - 
+Generating complete report...
+2025-04-13 02:27:28,724 - WARNING - 
+Warning: Generated report is empty!
+2025-04-13 02:27:28,725 - INFO - 
+Test complete! Logs saved to: logs/beeswax_test_20250413_022720.log

@@ -1,0 +1,34 @@
+2025-04-13 10:59:02,529 - INFO - Starting Beeswax API test
+2025-04-13 10:59:02,529 - INFO - Reading brief from: C:\QA_auto_check\Brief\Create Campaign Brief - a90VS0000000RzV.xlsx
+2025-04-13 10:59:02,847 - INFO - Brief loaded successfully!
+2025-04-13 10:59:02,847 - INFO - Brief shape: (31, 13)
+2025-04-13 10:59:02,848 - INFO - Initializing BeeswaxAPI...
+2025-04-13 10:59:02,848 - INFO - Loading credentials from ./input_folder/beeswax_input_filter.env
+2025-04-13 10:59:02,850 - INFO - Initializing BeeswaxAPI with email: gururagaventhara.lakshmanasamy@catalina.com
+2025-04-13 10:59:02,851 - INFO - Authenticating with gururagaventhara.lakshmanasamy@catalina.com at https://catalina.api.beeswax.com/rest/v2/authenticate
+2025-04-13 10:59:04,266 - INFO - Authentication successful!
+2025-04-13 10:59:04,268 - INFO - Cookies received: {'PHPSESSID': 'da8a245fe283991076234311c940e8f5', 'catalina_buzz_cookie': 'da8a245fe283991076234311c940e8f5', 'catalina_buzz_cookie_PERSISTENT': 'TmJzzJ0s4XihodIyMikM60ri%3A%3A6y8eJbAbJleZitviOSgjqWuxPUEmWvkuYM9jzlQinddUVBHo7eoD0AwlG4AUB1iw22gwEQW2qXGrUwnheehtUYAJbXTyguVpthygRw9xsj32AkFt7Jpm9hwZBbV2TUIc', 'csrftoken': 'aCA2D79pt2RKfPqTcAEONQ2poybJEJG9', 'sessionid': 'lr1k91wrc3rbtk7jf4tw996qa2q5vwfw'}
+2025-04-13 10:59:04,270 - INFO - Response headers: {'Date': 'Sun, 13 Apr 2025 05:29:04 GMT', 'Content-Type': 'application/json', 'Content-Length': '52', 'Connection': 'keep-alive', 'Server': 'nginx', 'Vary': 'Accept, Cookie, origin', 'Allow': 'POST, OPTIONS', 'X-Frame-Options': 'DENY, DENY', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'same-origin', 'Cross-Origin-Opener-Policy': 'same-origin', 'Set-Cookie': 'PHPSESSID=da8a245fe283991076234311c940e8f5; Path=/; SameSite=None; Secure, catalina_buzz_cookie=da8a245fe283991076234311c940e8f5; expires=Thu, 17 Apr 2025 09:29:04 GMT; Max-Age=360000; Path=/; SameSite=None; Secure, catalina_buzz_cookie_PERSISTENT=TmJzzJ0s4XihodIyMikM60ri%3A%3A6y8eJbAbJleZitviOSgjqWuxPUEmWvkuYM9jzlQinddUVBHo7eoD0AwlG4AUB1iw22gwEQW2qXGrUwnheehtUYAJbXTyguVpthygRw9xsj32AkFt7Jpm9hwZBbV2TUIc; expires=Tue, 13 May 2025 05:29:04 GMT; Max-Age=2592000; Path=/; SameSite=None; Secure, csrftoken=aCA2D79pt2RKfPqTcAEONQ2poybJEJG9; expires=Sun, 12 Apr 2026 05:29:04 GMT; Max-Age=31449600; Path=/; SameSite=None; Secure, sessionid=lr1k91wrc3rbtk7jf4tw996qa2q5vwfw; expires=Tue, 13 May 2025 05:29:04 GMT; HttpOnly; Max-Age=2592000; Path=/; SameSite=None; Secure', 'X-Buzz-Request-Id': 'b19f1e6b507254f839e6db38fce39f7b', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Allow-Methods': 'GET, PUT, POST, OPTIONS, DELETE', 'Access-Control-Allow-Headers': 'Accept,Authorization,Cache-Control,Content-Type,DNT,If-Modified-Since,Keep-Alive,Origin,User-Agent,X-Mx-ReqToken,X-Requested-With,X-Timezone,x-datadog-origin,x-datadog-parent-id,x-datadog-sampled,x-datadog-sampling-priority,x-datadog-trace-id,traceparent'}
+2025-04-13 10:59:04,272 - INFO - Extracting IDs from brief...
+2025-04-13 10:59:04,283 - INFO - Found IDs:
+2025-04-13 10:59:04,284 - INFO - campaign: ['BVI0000005436']
+2025-04-13 10:59:04,285 - INFO - line_item: ['BVT000021977', 'BVT000021976']
+2025-04-13 10:59:04,286 - INFO - creative: ['BVP000009771']
+2025-04-13 10:59:04,286 - INFO - 
+Processing campaign: BVI0000005436
+2025-04-13 10:59:04,288 - INFO - Making request to: https://catalina.api.beeswax.com/rest/v2/campaigns with params: {'alternative_id': 'BVI0000005436'}
+2025-04-13 10:59:04,288 - INFO - Current session cookies: {'PHPSESSID': 'da8a245fe283991076234311c940e8f5', 'catalina_buzz_cookie': 'da8a245fe283991076234311c940e8f5', 'catalina_buzz_cookie_PERSISTENT': 'TmJzzJ0s4XihodIyMikM60ri%3A%3A6y8eJbAbJleZitviOSgjqWuxPUEmWvkuYM9jzlQinddUVBHo7eoD0AwlG4AUB1iw22gwEQW2qXGrUwnheehtUYAJbXTyguVpthygRw9xsj32AkFt7Jpm9hwZBbV2TUIc', 'csrftoken': 'aCA2D79pt2RKfPqTcAEONQ2poybJEJG9', 'sessionid': 'lr1k91wrc3rbtk7jf4tw996qa2q5vwfw'}
+2025-04-13 10:59:04,843 - INFO - Response status code: 200
+2025-04-13 10:59:04,845 - INFO - Response data keys: dict_keys(['count', 'next', 'previous', 'results'])
+2025-04-13 10:59:04,847 - INFO - Campaign data keys: dict_keys(['results'])
+2025-04-13 10:59:04,849 - INFO - Processing response data with keys: dict_keys(['results'])
+2025-04-13 10:59:04,850 - INFO - Found results of type: <class 'list'>
+2025-04-13 10:59:04,851 - INFO - Returning 1 results
+2025-04-13 10:59:04,852 - INFO - Found 1 campaign results
+2025-04-13 10:59:04,853 - INFO - Processing campaign with keys: dict_keys(['id', 'create_date', 'update_date', 'last_active', 'name', 'active', 'advertiser_id', 'bid_modifier_id', 'delivery_modifier_id', 'alternative_id', 'notes', 'currency', 'min_bid', 'max_bid', 'continents', 'default_line_item_preset_id', 'default_targeting_preset_id', 'start_date', 'end_date', 'revenue', 'spend', 'impressions', 'budget_type', 'spend_budget', 'impressions_budget', 'vendor_fees', 'ghost_bidding', 'event_ids', 'frequency_caps', 'segment_extension', 'experiment', 'account_id', 'was_activated'])
+2025-04-13 10:59:04,854 - INFO - Extracted campaign columns: dict_keys(['campaign_id', 'campaign_name', 'campaign_active', 'campaign_start_date', 'campaign_end_date', 'campaign_alternative_id'])
+2025-04-13 10:59:04,855 - INFO - Found 0 line items for campaign BVI0000005436
+2025-04-13 10:59:04,856 - WARNING - No data was collected for the report
+2025-04-13 10:59:04,857 - INFO - 
+Test complete! Total execution time: 2.33 seconds
+2025-04-13 10:59:04,857 - INFO - Logs saved to: logs/beeswax_test_20250413_105902.log

@@ -1,0 +1,26 @@
+2025-04-13 10:58:05,375 - INFO - Starting Beeswax API test
+2025-04-13 10:58:05,375 - INFO - Reading brief from: C:\QA_auto_check\Brief\Create Campaign Brief - a90VS0000000RzV.xlsx
+2025-04-13 10:58:05,714 - INFO - Brief loaded successfully!
+2025-04-13 10:58:05,714 - INFO - Brief shape: (31, 13)
+2025-04-13 10:58:05,715 - INFO - Initializing BeeswaxAPI...
+2025-04-13 10:58:05,715 - INFO - Loading credentials from ./input_folder/beeswax_input_filter.env
+2025-04-13 10:58:05,728 - INFO - Initializing BeeswaxAPI with email: gururagaventhara.lakshmanasamy@catalina.com
+2025-04-13 10:58:05,729 - INFO - Authenticating with gururagaventhara.lakshmanasamy@catalina.com at https://catalina.api.beeswax.com/rest/v2/authenticate
+2025-04-13 10:58:07,182 - INFO - Authentication successful!
+2025-04-13 10:58:07,184 - INFO - Cookies received: {'PHPSESSID': 'c468b37685b4115d970afed9c34fc591', 'catalina_buzz_cookie': 'c468b37685b4115d970afed9c34fc591', 'catalina_buzz_cookie_PERSISTENT': 'OiRErYAKUHW5k5h6fKdmWBDw%3A%3AIgV86z223Pwr98zvjJSYYUtUSpPmY0B8UzZZZm1kWP3s7KFYETx9v0ChWv3mbtf9ia6cHLeTOjGLLqZ3MojcjevVFmEe034YkejFhfUGytEp9xrhZ1qTi6ayzuNqoHrh', 'csrftoken': '6kRc8pPkaJd0xgVm7ocvye9GQJFwA4yK', 'sessionid': 'rx3wwabvzl29hd5c5y04mmyoue6rc66u'}
+2025-04-13 10:58:07,185 - INFO - Response headers: {'Date': 'Sun, 13 Apr 2025 05:28:07 GMT', 'Content-Type': 'application/json', 'Content-Length': '52', 'Connection': 'keep-alive', 'Server': 'nginx', 'Vary': 'Accept, Cookie, origin', 'Allow': 'POST, OPTIONS', 'X-Frame-Options': 'DENY, DENY', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'same-origin', 'Cross-Origin-Opener-Policy': 'same-origin', 'Set-Cookie': 'PHPSESSID=c468b37685b4115d970afed9c34fc591; Path=/; SameSite=None; Secure, catalina_buzz_cookie=c468b37685b4115d970afed9c34fc591; expires=Thu, 17 Apr 2025 09:28:07 GMT; Max-Age=360000; Path=/; SameSite=None; Secure, catalina_buzz_cookie_PERSISTENT=OiRErYAKUHW5k5h6fKdmWBDw%3A%3AIgV86z223Pwr98zvjJSYYUtUSpPmY0B8UzZZZm1kWP3s7KFYETx9v0ChWv3mbtf9ia6cHLeTOjGLLqZ3MojcjevVFmEe034YkejFhfUGytEp9xrhZ1qTi6ayzuNqoHrh; expires=Tue, 13 May 2025 05:28:07 GMT; Max-Age=2592000; Path=/; SameSite=None; Secure, csrftoken=6kRc8pPkaJd0xgVm7ocvye9GQJFwA4yK; expires=Sun, 12 Apr 2026 05:28:07 GMT; Max-Age=31449600; Path=/; SameSite=None; Secure, sessionid=rx3wwabvzl29hd5c5y04mmyoue6rc66u; expires=Tue, 13 May 2025 05:28:07 GMT; HttpOnly; Max-Age=2592000; Path=/; SameSite=None; Secure', 'X-Buzz-Request-Id': 'c1a25f1806fb50c37f1e3c2501e5dcb7', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Allow-Methods': 'GET, PUT, POST, OPTIONS, DELETE', 'Access-Control-Allow-Headers': 'Accept,Authorization,Cache-Control,Content-Type,DNT,If-Modified-Since,Keep-Alive,Origin,User-Agent,X-Mx-ReqToken,X-Requested-With,X-Timezone,x-datadog-origin,x-datadog-parent-id,x-datadog-sampled,x-datadog-sampling-priority,x-datadog-trace-id,traceparent'}
+2025-04-13 10:58:07,188 - INFO - Extracting IDs from brief...
+2025-04-13 10:58:07,200 - INFO - Found IDs:
+2025-04-13 10:58:07,201 - INFO - campaign: ['BVI0000005436']
+2025-04-13 10:58:07,201 - INFO - line_item: ['BVT000021977', 'BVT000021976']
+2025-04-13 10:58:07,202 - INFO - creative: ['BVP000009771']
+2025-04-13 10:58:07,203 - INFO - 
+Processing campaign: BVI0000005436
+2025-04-13 10:58:07,204 - INFO - Making request to: https://catalina.api.beeswax.com/rest/v2/campaigns with params: {'alternative_id': 'BVI0000005436'}
+2025-04-13 10:58:07,205 - INFO - Current session cookies: {'PHPSESSID': 'c468b37685b4115d970afed9c34fc591', 'catalina_buzz_cookie': 'c468b37685b4115d970afed9c34fc591', 'catalina_buzz_cookie_PERSISTENT': 'OiRErYAKUHW5k5h6fKdmWBDw%3A%3AIgV86z223Pwr98zvjJSYYUtUSpPmY0B8UzZZZm1kWP3s7KFYETx9v0ChWv3mbtf9ia6cHLeTOjGLLqZ3MojcjevVFmEe034YkejFhfUGytEp9xrhZ1qTi6ayzuNqoHrh', 'csrftoken': '6kRc8pPkaJd0xgVm7ocvye9GQJFwA4yK', 'sessionid': 'rx3wwabvzl29hd5c5y04mmyoue6rc66u'}
+2025-04-13 10:58:07,786 - INFO - Response status code: 200
+2025-04-13 10:58:07,787 - INFO - Response data keys: dict_keys(['count', 'next', 'previous', 'results'])
+2025-04-13 10:58:07,789 - WARNING - No data was collected for the report
+2025-04-13 10:58:07,790 - INFO - 
+Test complete! Total execution time: 2.41 seconds
+2025-04-13 10:58:07,790 - INFO - Logs saved to: logs/beeswax_test_20250413_105805.log
