@@ -277,27 +277,27 @@ def get_base_cpm(platform_media, geo_required, lda_compliant):
     geo_required = str(geo_required).lower().strip()
     lda_compliant = str(lda_compliant).lower().strip()
     
-    # Mobile CPMs
+    # Mobile CPMs (Dummy values for demonstration)
     if platform_media.startswith('mobile'):
         if 'banner' in platform_media:
-            return 2.34 if geo_required == 'yes' else 2.00
+            return 1.25 if geo_required == 'yes' else 1.00
         elif 'rich media' in platform_media:
-            return 3.15  # regardless of geo
+            return 1.75  # regardless of geo
         elif 'video' in platform_media:
-            return 6.30  # regardless of geo
+            return 3.50  # regardless of geo
             
-    # Desktop CPMs
+    # Desktop CPMs (Dummy values for demonstration)
     elif platform_media.startswith('desktop'):
         if 'banner' in platform_media:
-            return 2.89 if geo_required == 'yes' else 2.36
+            return 1.50 if geo_required == 'yes' else 1.25
         elif 'rich media' in platform_media:
-            return 2.89  # regardless of geo
+            return 1.50  # regardless of geo
         elif 'video' in platform_media:
-            return 7.35  # regardless of geo
+            return 4.00  # regardless of geo
             
-    # CTV CPMs
+    # CTV CPMs (Dummy values for demonstration)
     elif platform_media.startswith('ctv'):
-        return 19.00 if lda_compliant == 'yes' else 17.00
+        return 10.00 if lda_compliant == 'yes' else 9.00
         
     return None  # Return None if no matching rule found
 
@@ -337,55 +337,55 @@ def get_viewability_addon_cpm(platform_media, viewability_goal):
         # Format normalized viewability for display
         normalized_viewability = f"{viewability:.1f}%"
         
-        # Define viewability ranges and their corresponding CPMs
+        # Define viewability ranges and their corresponding CPMs (Dummy values for demonstration)
         viewability_cpms = {
             'mobile/banner': {
-                (60, 74): 0.15,
-                (75, 84): 0.40,
-                (85, 94): 1.43,
-                (95, 100): 2.47
+                (60, 74): 0.10,
+                (75, 84): 0.25,
+                (85, 94): 0.75,
+                (95, 100): 1.25
             },
             'mobile/geo-targeting': {
-                (60, 74): 0.15,
-                (75, 84): 0.47,
-                (85, 94): 1.67,
-                (95, 100): 2.90
+                (60, 74): 0.10,
+                (75, 84): 0.25,
+                (85, 94): 0.85,
+                (95, 100): 1.50
             },
             'mobile/rich media': {
-                (60, 74): 0.15,
-                (75, 84): 0.63,
-                (85, 94): 2.25,
-                (95, 100): 3.90
+                (60, 74): 0.10,
+                (75, 84): 0.35,
+                (85, 94): 1.25,
+                (95, 100): 2.00
             },
             'mobile/video': {
-                (60, 74): 2.45,
-                (75, 84): 3.90,
-                (85, 94): 4.50,
-                (95, 100): 7.80
+                (60, 74): 1.25,
+                (75, 84): 2.00,
+                (85, 94): 2.50,
+                (95, 100): 4.00
             },
             'desktop/banner': {
-                (60, 74): 0.45,
-                (75, 84): 0.83,
-                (85, 94): 2.95,
-                (95, 100): 5.06
+                (60, 74): 0.25,
+                (75, 84): 0.45,
+                (85, 94): 1.50,
+                (95, 100): 2.50
             },
             'desktop/geo-targeting': {
-                (60, 74): 0.45,
-                (75, 84): 1.02,
-                (85, 94): 3.60,
-                (95, 100): 6.19
+                (60, 74): 0.25,
+                (75, 84): 0.50,
+                (85, 94): 1.75,
+                (95, 100): 3.00
             },
             'desktop/rich media': {
-                (60, 74): 0.45,
-                (75, 84): 1.02,
-                (85, 94): 3.60,
-                (95, 100): 6.19
+                (60, 74): 0.25,
+                (75, 84): 0.50,
+                (85, 94): 1.75,
+                (95, 100): 3.00
             },
             'desktop/video': {
-                (60, 74): 2.45,
-                (75, 84): 4.55,
-                (85, 94): 9.17,
-                (95, 100): 15.75
+                (60, 74): 1.25,
+                (75, 84): 2.50,
+                (85, 94): 4.50,
+                (95, 100): 8.00
             }
         }
         
