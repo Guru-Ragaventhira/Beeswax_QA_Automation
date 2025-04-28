@@ -123,8 +123,6 @@ class BeeswaxQA:
             )
             
             print(f"Response status code: {response.status_code}")
-            print(f"Response content: {response.text}")
-            print(f"Response cookies: {response.cookies.get_dict()}")
             
             response.raise_for_status()
             
@@ -198,11 +196,9 @@ class BeeswaxQA:
             try:
                 url = f"{self.campaign_url}?alternative_id={campaign_id}"
                 print(f"Fetching campaign data from: {url}")
-                print(f"Using headers: {self.headers}")
                 
                 response = requests.get(url, headers=self.headers)
                 print(f"Response status code: {response.status_code}")
-                print(f"Response content: {response.text}")
                 
                 response.raise_for_status()
                 
@@ -228,11 +224,9 @@ class BeeswaxQA:
             try:
                 url = f"{self.lineitem_url}?alternative_id={line_item_id}"
                 print(f"Fetching line item data from: {url}")
-                print(f"Using headers: {self.headers}")
                 
                 response = requests.get(url, headers=self.headers)
                 print(f"Response status code: {response.status_code}")
-                print(f"Response content: {response.text}")
                 
                 response.raise_for_status()
                 
@@ -262,11 +256,9 @@ class BeeswaxQA:
                 try:
                     url = self.creative_lineitem_url.format(line_item_id=line_item_id)
                     print(f"Fetching creative mappings for line item {line_item_id}")
-                    print(f"Using headers: {self.headers}")
                     
                     response = requests.get(url, headers=self.headers)
                     print(f"Response status code: {response.status_code}")
-                    print(f"Response content: {response.text}")
                     
                     response.raise_for_status()
                     
@@ -291,11 +283,9 @@ class BeeswaxQA:
             try:
                 url = f"{self.creative_url}?alternative_id={creative_id}"
                 print(f"Fetching creative data from: {url}")
-                print(f"Using headers: {self.headers}")
                 
                 response = requests.get(url, headers=self.headers)
                 print(f"Response status code: {response.status_code}")
-                print(f"Response content: {response.text}")
                 
                 response.raise_for_status()
                 
@@ -330,7 +320,6 @@ class BeeswaxQA:
                 
                 response = requests.get(url, headers=self.headers)
                 print(f"Response status code: {response.status_code}")
-                print(f"Response content: {response.text}")
                 
                 response.raise_for_status()
                 
@@ -392,10 +381,8 @@ class BeeswaxQA:
                         print(f"Successfully fetched targeting data for {len(chunk)} line items")
                     else:
                         print(f"Unexpected content type: {response.headers.get('content-type')}")
-                        print(f"Response content: {response.text}")
                 else:
                     print(f"Failed to fetch targeting data. Status code: {response.status_code}")
-                    print(f"Response content: {response.text}")
             
             except Exception as e:
                 print(f"Error fetching targeting data for chunk: {e}")

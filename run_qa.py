@@ -2,9 +2,9 @@
 Combined QA Automation Script
 
 This script combines the execution of multiple QA scripts into a single process:
-1. test_api.py - Generates the main QA report with 3 tabs
+1. beeswax_api.py - Generates the main QA report with 3 tabs
 2. qa_flight_v3.py - Validates flight dates 
-3. name_assign.py - Checks naming conventions
+3. name_assign.py - Checks naming conventions, aasignments, active status
 4. targeting.py - Validates targeting settings
 5. creative.py - Validates creative settings
 
@@ -93,9 +93,9 @@ def run_script_and_get_output(script_name, module_name, script_func=None):
         print(f"Error running {script_name}: {e}")
         return None
 
-def run_test_api():
+def run_beeswax_api():
     """
-    Run the test_api.py script and return the output file path
+    Run the beeswax_api.py script and return the output file path
     """
     # Check if a specific QA report is already provided in env vars
     qa_report_path = os.environ.get("QA_REPORT_PATH")
@@ -104,8 +104,8 @@ def run_test_api():
         return qa_report_path
     
     try:
-        # Import test_api.py and run
-        test_api_module = load_module_from_file("test_api", "test_api.py")
+        # Import beeswax_api.py and run
+        beeswax_api_module = load_module_from_file("beeswax_api", "beeswax_api.py")
         
         # Get parameters from environment variables
         brief_path = os.environ.get("BRIEF_PATH")
@@ -114,25 +114,25 @@ def run_test_api():
         
         # Create an instance of BeeswaxQA with environment parameters
         if brief_path and env_path and output_dir:
-            qa = test_api_module.BeeswaxQA(brief_path, env_path, output_dir)
+            qa = beeswax_api_module.BeeswaxQA(brief_path, env_path, output_dir)
         elif brief_path and output_dir:
-            qa = test_api_module.BeeswaxQA(brief_path, output_dir=output_dir)
+            qa = beeswax_api_module.BeeswaxQA(brief_path, output_dir=output_dir)
         elif brief_path:
-            qa = test_api_module.BeeswaxQA(brief_path)
+            qa = beeswax_api_module.BeeswaxQA(brief_path)
         else:
-            qa = test_api_module.BeeswaxQA()
+            qa = beeswax_api_module.BeeswaxQA()
         
         # Generate the QA report
         output_file = qa.generate_qa_report()
         
-        print(f"test_api.py completed, output file: {output_file}")
+        print(f"beeswax_api.py completed, output file: {output_file}")
         return output_file
     
     except Exception as e:
-        print(f"Error running test_api.py: {e}")
+        print(f"Error running beeswax_api.py: {e}")
         
         # Fallback: Run as subprocess
-        subprocess.run([sys.executable, "test_api.py"], check=True)
+        subprocess.run([sys.executable, "beeswax_api.py"], check=True)
         
         # Find the latest QA report in the output directory
         output_dir = os.environ.get("OUTPUT_DIR", "./output_folder")
@@ -198,7 +198,7 @@ def create_combined_report(qa_report_path, other_outputs):
     Preserves original formatting
     
     Args:
-        qa_report_path: Path to the QA report from test_api.py
+        qa_report_path: Path to the QA report from beeswax_api.py
         other_outputs: Dictionary mapping script names to their output file paths
     
     Returns:
@@ -266,6 +266,58 @@ def create_combined_report(qa_report_path, other_outputs):
         # Copy merged cells
         for merged_range in source_sheet.merged_cells.ranges:
             new_sheet.merge_cells(str(merged_range))
+            
+        # Copy conditional formatting from QA report sheets
+        try:
+            if hasattr(source_sheet, 'conditional_formatting'):
+                # Access the conditional formatting directly
+                cf_list = source_sheet.conditional_formatting
+                
+                # Special handling for Segment Data tab which contains MultiCellRange objects
+                if sheet_name == "Segment Data":
+                    # Copy from source workbook to combined workbook using openpyxl directly
+                    # This bypasses our manual copy logic which was failing
+                    for cf_rule in cf_list:
+                        try:
+                            # Get the range string and rule
+                            if hasattr(cf_rule, 'sqref') and hasattr(cf_rule.sqref, 'sqref'):
+                                range_string = cf_rule.sqref.sqref
+                            elif hasattr(cf_rule, 'sqref') and isinstance(cf_rule.sqref, str):
+                                range_string = cf_rule.sqref
+                            elif hasattr(cf_rule, 'cells'):
+                                # For MultiCellRange objects
+                                range_string = cf_rule.cells
+                            else:
+                                # Try to get the string representation of the range
+                                range_string = str(cf_rule)
+                                # Extract just the cell range part using regex if possible
+                                import re
+                                match = re.search(r'[A-Z]+\d+:[A-Z]+\d+', range_string)
+                                if match:
+                                    range_string = match.group(0)
+                                
+                            # Add the rule to the new sheet with the extracted range
+                            new_sheet.conditional_formatting.add(range_string, cf_rule.rule)
+                            
+                        except Exception as e:
+                            print(f"Warning: Could not copy specific conditional formatting rule for {sheet_name}: {e}")
+                else:
+                    # Regular handling for other tabs
+                    for cf_rule in cf_list:
+                        try:
+                            # Get the range and rule
+                            if hasattr(cf_rule, 'sqref') and hasattr(cf_rule.sqref, 'sqref'):
+                                new_sheet.conditional_formatting.add(cf_rule.sqref.sqref, cf_rule)
+                            elif hasattr(cf_rule, 'sqref') and isinstance(cf_rule.sqref, str):
+                                new_sheet.conditional_formatting.add(cf_rule.sqref, cf_rule)
+                            else:
+                                # Skip if we can't determine the range
+                                continue
+                        except Exception as e:
+                            print(f"Warning: Could not copy conditional formatting rule for {sheet_name}: {e}")
+                            
+        except Exception as e:
+            print(f"Warning: Issue with conditional formatting for {sheet_name}: {e}")
     
     # Define standardized tab names for each script
     script_tab_names = {
@@ -349,15 +401,26 @@ def create_combined_report(qa_report_path, other_outputs):
                 for merged_range in source_sheet.merged_cells.ranges:
                     new_sheet.merge_cells(str(merged_range))
                 
-                # Copy conditional formatting if possible
+                # Copy conditional formatting if possible using the same approach as for main sheets
                 try:
                     if hasattr(source_sheet, 'conditional_formatting'):
-                        for cf_range, cf_rules in source_sheet.conditional_formatting.items():
-                            for rule in cf_rules:
-                                try:
-                                    new_sheet.conditional_formatting.add(cf_range, rule)
-                                except Exception as e:
-                                    print(f"Warning: Could not copy conditional formatting: {e}")
+                        # Access the conditional formatting directly
+                        cf_list = source_sheet.conditional_formatting
+                        for cf_rule in cf_list:
+                            try:
+                                # Get the range and rule
+                                if hasattr(cf_rule, 'sqref') and hasattr(cf_rule.sqref, 'sqref'):
+                                    new_sheet.conditional_formatting.add(cf_rule.sqref.sqref, cf_rule)
+                                elif hasattr(cf_rule, 'sqref') and isinstance(cf_rule.sqref, str):
+                                    new_sheet.conditional_formatting.add(cf_rule.sqref, cf_rule)
+                                elif hasattr(cf_rule, 'cells'):
+                                    # For MultiCellRange objects
+                                    new_sheet.conditional_formatting.add(cf_rule.cells, cf_rule.rule)
+                                else:
+                                    # Skip if we can't determine the range
+                                    continue
+                            except Exception as e:
+                                print(f"Warning: Could not copy conditional formatting rule: {e}")
                 except Exception as e:
                     print(f"Warning: Issue with conditional formatting: {e}")
                 
@@ -428,12 +491,12 @@ def main():
     # Make sure output directories exist
     ensure_output_paths()
     
-    # 1. Run test_api.py first
-    print("\nStep 1: Running test_api.py...")
-    qa_report_path = run_test_api()
+    # 1. Run beeswax_api.py first
+    print("\nStep 1: Running beeswax_api.py...")
+    qa_report_path = run_beeswax_api()
     
     if not qa_report_path or not os.path.exists(qa_report_path):
-        print("Error: Failed to generate QA report from test_api.py")
+        print("Error: Failed to generate QA report from beeswax_api.py")
         return
     
     print(f"QA report generated: {qa_report_path}")

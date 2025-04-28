@@ -45,7 +45,7 @@ def load_credentials():
     # Try to load from Streamlit secrets first (for cloud deployment)
     try:
         if 'beeswax_credentials' in st.secrets:
-            st.success("✓ Using secure credentials from Streamlit Cloud")
+            st.success("✓ Using secure credentials from Streamlit")
             # Map Streamlit secrets to environment variables
             for key, value in st.secrets.beeswax_credentials.items():
                 os.environ[key] = value
@@ -212,7 +212,7 @@ def main():
     # Create temporary directory for uploaded files
     with tempfile.TemporaryDirectory() as temp_dir:
         # File uploader for campaign brief only
-        brief_file = st.file_uploader("Upload Campaign Brief (Excel/CSV)", type=['xlsx', 'xls', 'csv'])
+        brief_file = st.file_uploader("Upload Campaign Brief (Excel/CSV)", type=['xlsx', 'csv'])
         
         if brief_file:
             # Save uploaded file
@@ -258,11 +258,11 @@ def main():
             if st.button("Generate QA Report"):
                 with st.spinner("Generating Comprehensive QA Report..."):
                     try:
-                        # Set environment variables for comb_qa.py
+                        # Set environment variables for run_qa.py
                         os.environ["BRIEF_PATH"] = brief_path
                         os.environ["ENV_PATH"] = env_path
                         os.environ["OUTPUT_DIR"] = output_dir
-                        # Set additional variables that comb_qa.py might use
+                        # Set additional variables that run_qa.py might use
                         output_raw_dir = os.path.join(output_dir, "raw")
                         os.environ["OUTPUT_RAW_DIR"] = output_raw_dir
                         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -285,7 +285,7 @@ def main():
                         
                         # Import and run the combined QA script
                         st.write("Loading QA modules...")
-                        comb_qa = load_module_from_file("comb_qa", "comb_qa.py")
+                        comb_qa = load_module_from_file("comb_qa", "run_qa.py")
                         
                         st.write("Running comprehensive QA process...")
                         final_report_path = comb_qa.main()  # This should run all QA scripts and return the combined report path
@@ -296,9 +296,9 @@ def main():
                         if final_report_path and os.path.exists(final_report_path):
                             st.success("Comprehensive QA Report generated successfully!")
                             
-                            # Load the test_api module to display ID summaries
-                            test_api = load_module_from_file("test_api", "test_api.py")
-                            qa = test_api.BeeswaxQA(brief_path, env_path, temp_dir)
+                            # Load the beeswax_api module to display ID summaries
+                            beeswax_api = load_module_from_file("beeswax_api", "beeswax_api.py")
+                            qa = beeswax_api.BeeswaxQA(brief_path, env_path, temp_dir)
                             qa.load_brief()
                             
                             # Display ID summaries
