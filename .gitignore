@@ -12,6 +12,15 @@ output_reports/
 output_folder/
 output_raw/
 
+# Access logs and log files
+access_logs/
+logs/
+*.log
+
+# Sample brief files (may contain sensitive data)
+Brief/*.xlsx
+input_folder/*.xlsx
+
 # Python 
 __pycache__/
 *.py[cod]
