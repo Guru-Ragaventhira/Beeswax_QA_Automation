@@ -8,13 +8,19 @@ input_folder/beeswax_input_*.env
 
 # Generated output files
 output_*/
+!output_*/.gitkeep
 output_reports/
+!output_reports/.gitkeep
 output_folder/
+!output_folder/.gitkeep
 output_raw/
+!output_raw/.gitkeep
 
 # Access logs and log files
 access_logs/
+!access_logs/.gitkeep
 logs/
+!logs/.gitkeep
 *.log
 
 # Sample brief files (may contain sensitive data)
