@@ -113,12 +113,12 @@ Launch the Streamlit web application:
 streamlit run qa_automation.py
 ```
 
-The application will be available at `http://localhost:8501` in your web browser.
+The application will be available at `http://localhost:7777` in your web browser.
 
 ### Using the Web Interface
 
 1. Connect to your company VPN (if accessing Beeswax API)
-2. Navigate to `http://localhost:8501` in your browser
+2. Navigate to `http://localhost:7777` in your browser
 3. Upload a campaign brief file (Excel or CSV format)
 4. Review brief validation results
 5. Click "Generate QA Report" to initiate the full QA process
